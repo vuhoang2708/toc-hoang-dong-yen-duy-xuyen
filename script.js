@@ -1,63 +1,45 @@
 const topics = [
   {
     num: 1,
-    name: "Thoả thuận Văn hoá",
-    en: "Culture Pact",
-    desc: "Thảo luận và thiết lập các hành vi, thái độ chung được thống nhất giữa các thành viên để tạo ra môi trường học tập và làm việc an toàn, cởi mở. Chọn 3 hành vi từ 11 đề xuất — chỉ giữ 3 để dễ nhớ và ai cũng thực hiện được."
+    name: "Khoa học hạnh phúc",
+    en: "Science of Happiness",
+    desc: "Nền tảng của khóa học dựa trên các nghiên cứu về tâm lý học tích cực và các yếu tố tạo nên hạnh phúc thực sự và bền vững trong công việc cũng như cuộc sống."
   },
   {
     num: 2,
-    name: "Giá trị Cốt lõi",
-    en: "Core Values (ME & WE)",
-    desc: "Khám phá 7 cấp độ nhận thức và giá trị cốt lõi cá nhân (ME), từ đó đối chiếu và thống nhất với các giá trị chung của tập thể (WE) thông qua những hành vi cụ thể. Giá trị thật sự = La bàn dẫn lối + Thời gian thực sự dành cho nó."
+    name: "3 đòn bẩy hạnh phúc",
+    en: "3 Levers of Happiness",
+    desc: "Khám phá Thuyết Tự quyết với 3 đòn bẩy: Cảm giác Tiến bộ (Progress), Cảm giác Tự chủ (Control) và Cảm giác Kết nối (Connection)."
   },
   {
     num: 3,
-    name: "La bàn và Đồng hồ",
-    en: "Compass & Clock",
-    desc: "Đánh giá sự đồng nhất giữa những gì chúng ta coi trọng, dẫn lối cuộc sống (La bàn) và các hành động thực tế chúng ta đang dành thời gian thực hiện hàng ngày (Đồng hồ). Nơi hai yếu tố khớp nhau = giá trị thực sự (actual values)."
+    name: "Mục đích cao cả",
+    en: "Higher Purpose",
+    desc: "Hiểu về ba cấp độ hạnh phúc: Thú vui, Đam mê và Mục đích cao cả. Hạnh phúc lâu dài nhất đến từ việc tìm thấy và cống hiến cho mục đích lớn lao (Higher Purpose)."
   },
   {
     num: 4,
-    name: "Ba cấp độ Hạnh phúc",
-    en: "Levels of Happiness",
-    desc: "Pleasure (thú vui) → Passion (đam mê) → Higher Purpose (mục đích cao cả). Hạnh phúc bền lâu đến từ Higher Purpose — việc gắn kết hành động với điều gì đó lớn hơn chính bản thân. Aristotle: 'Hạnh phúc là mục đích tồn tại của chúng ta và hạnh phúc phụ thuộc vào chính chúng ta.'"
+    name: "Giá trị bản thân",
+    en: "Core Values",
+    desc: "Nhận diện những giá trị cốt lõi của bản thân (ME) và cách để mang những giá trị đó vào môi trường làm việc tập thể (WE)."
   },
   {
     num: 5,
-    name: "Khoa học Hạnh phúc & 3 Đòn bẩy",
-    en: "Science of Happiness & 3 Levers",
-    desc: "Thuyết Tự quyết (Self-Determination Theory): Cảm giác Tiến bộ · Cảm giác Tự chủ · Cảm giác Kết nối. Ba cảm giác này chuyển hóa thành 5 thói quen hạnh phúc. Kết nối = với chính mình + với người xung quanh + với thiên nhiên."
+    name: "Thực tế so với Tuyên ngôn",
+    en: "Actual vs Declared Values",
+    desc: "Đánh giá lại sự khác biệt giữa những giá trị chúng ta tuyên bố với cách chúng ta đang thực sự hành động và tư duy mỗi ngày."
   },
   {
     num: 6,
-    name: "Thói quen Tỉnh thức",
-    en: "Mindfulness",
-    desc: "Rèn luyện sự tập trung chú ý vào khoảnh khắc hiện tại mà không phán xét. Đây là trạng thái nền tảng và cốt lõi nhất để có thể thực hành các thói quen hạnh phúc còn lại. 98% dân số không thể đa nhiệm hiệu quả — tỉnh thức giúp chúng ta tập trung."
+    name: "La bàn + Tài nguyên (Thời gian và Tiền bạc)",
+    en: "Compass & Resources",
+    desc: "Sự đồng bộ giữa kim chỉ nam (La bàn) với việc chúng ta phân bổ hai tài nguyên quý giá nhất: Thời gian và Tiền bạc. Giá trị thật sự nằm ở nơi ta dành thời gian."
   },
   {
     num: 7,
-    name: "Thói quen Biết ơn",
-    en: "Gratitude",
-    desc: "Học cách nhận thức và trân trọng không chỉ những điều tốt đẹp, mà còn biết ơn nghịch cảnh, những điều tốt đẹp sẽ đến trong tương lai và biết ơn chính bản thân mình. Biết ơn trực tiếp kích hoạt Cảm giác Tiến bộ."
-  },
-  {
-    num: 8,
-    name: "Thói quen Lạc quan",
-    en: "Optimism (ABCDE Tool)",
-    desc: "Rèn luyện não bộ nhìn nhận sự việc theo hướng tích cực. Công cụ ABCDE: A-Adversity (nghịch cảnh) → B-Belief (niềm tin phát sinh) → C-Consequence (hậu quả) → D-Dispute (phản biện lại) → E-Effect & Action (kết quả mới). Biến cạm bẫy thành cơ hội."
-  },
-  {
-    num: 9,
-    name: "Thói quen Phiêu",
-    en: "Flow",
-    desc: "Trạng thái đắm chìm hoàn toàn và không bị phân tâm vào công việc hiện tại. Để đạt Phiêu cần: (1) Nhiệm vụ đầy thách thức, (2) Kỹ năng đủ để chinh phục, (3) Nhận phản hồi ngay lập tức, (4) Hiện diện và không bị phân tâm. Tìm 'microflow' trong những việc nhỏ hằng ngày."
-  },
-  {
-    num: 10,
-    name: "Thói quen Vị nhân",
-    en: "Altruism",
-    desc: "Khuyến khích sự cống hiến vì lợi ích chung và giúp đỡ người khác từ tận đáy lòng. Học cách trở thành 'người cho đi thông minh' (smart giver) — kết hợp giữa lòng tốt và trí tuệ, tránh trở thành 'người hy sinh' tiêu cực. Fit-forward: nhận và trao tiếp."
+    name: "Thói quen hạnh phúc: Biết ơn và Lạc quan, Vị Nhân, Tỉnh thức và Phiêu",
+    en: "Happiness Habits",
+    desc: "Bộ 5 thói quen cụ thể giúp kích hoạt 3 đòn bẩy hạnh phúc trong não bộ: Biết ơn (nhận ra giá trị), Lạc quan (vượt nghịch cảnh), Vị nhân (cống hiến), Tỉnh thức (tập trung hiện tại) và Phiêu (đắm chìm năng suất cao)."
   }
 ];
 
