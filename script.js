@@ -19,33 +19,15 @@ const topics = [
   },
   {
     num: 4,
-    name: "Mục đích cao cả",
-    en: "Higher Purpose",
-    desc: "Chiều sâu của hạnh phúc đến từ việc tìm thấy và cống hiến cho mục đích lớn lao (Higher Purpose) — việc gắn kết hành động với điều gì đó lớn hơn chính bản thân."
+    name: "Giá trị cốt lõi",
+    en: "Core Values",
+    desc: "Sự đồng bộ giữa giá trị bản thân, những gì chúng ta thực sự hành động (thay vì chỉ tuyên ngôn) và cách phân bổ tài nguyên Thời gian, Tiền bạc theo chiếc La bàn cuộc đời."
   },
   {
     num: 5,
-    name: "Giá trị bản thân",
-    en: "Core Values",
-    desc: "Nhận diện những giá trị cốt lõi của bản thân (ME) và cách để mang những giá trị đó vào môi trường làm việc tập thể (WE)."
-  },
-  {
-    num: 6,
-    name: "Thực tế so với Tuyên ngôn",
-    en: "Actual vs Declared Values",
-    desc: "Đánh giá lại sự khác biệt giữa những giá trị chúng ta tuyên bố với cách chúng ta đang thực sự hành động và tư duy mỗi ngày."
-  },
-  {
-    num: 7,
-    name: "La bàn + Tài nguyên (Thời gian và Tiền bạc)",
-    en: "Compass & Resources",
-    desc: "Sự đồng bộ giữa kim chỉ nam (La bàn) với việc chúng ta phân bổ hai tài nguyên quý giá nhất: Thời gian và Tiền bạc. Giá trị thật sự nằm ở nơi ta dành thời gian."
-  },
-  {
-    num: 8,
-    name: "Thói quen hạnh phúc: Biết ơn và Lạc quan, Vị Nhân, Tỉnh thức và Phiêu",
+    name: "Thói quen hạnh phúc",
     en: "Happiness Habits",
-    desc: "Bộ 5 thói quen cụ thể giúp kích hoạt 3 đòn bẩy hạnh phúc trong não bộ: Biết ơn, Lạc quan, Vị nhân, Tỉnh thức và Phiêu."
+    desc: "Bộ 5 thói quen cụ thể giúp kích hoạt 3 đòn bẩy hạnh phúc: Biết ơn, Lạc quan, Vị nhân, Tỉnh thức và Phiêu."
   }
 ];
 
