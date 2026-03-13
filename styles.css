@@ -643,3 +643,20 @@ body {
 .artifact-status.completed:hover {
   background: rgba(16, 185, 129, 0.3);
 }
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 768px) {
+  .nav-logo-img {
+    height: 80px;
+  }
+
+  .top-nav {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-logo-img {
+    height: 60px;
+  }
+}
