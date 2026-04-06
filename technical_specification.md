@@ -100,15 +100,36 @@ Sử dụng bản Python Microsoft Store để vượt rào IT công ty. Lệnh 
 ### 3. Đường dẫn Mặc định (Project Root)
 Tất cả các tệp tin, dữ liệu và hội thoại của dự án phải nằm tại: `G:\My Drive\antigravity`.
 
+## 6. Hệ thống Thông báo (Notification System)
+Hệ thống được thiết lập để tự động gửi Email cho Ban Tổ Chức (BTC) ngay khi có đăng ký mới thành công.
+
+*   **Vị trí cấu hình:** Nằm trong Google Apps Script (`Code.gs`).
+*   **Biến quản lý Email:** **`btcEmail`** (Dòng số 4).
+*   **Cách thêm người nhận:**
+    1. Truy cập [script.google.com](https://script.google.com/home).
+    2. Sửa dòng 4: `var btcEmail = "email1@gmail.com, email2@gmail.com";` (Các email cách nhau bằng dấu phẩy).
+    3. **QUAN TRỌNG:** Bấm **Deploy** -> **Manage deployments** -> **Edit (✏️)** -> Chọn **New version** -> Bấm **Deploy**.
+*   **Điều kiện gửi mail:** Chỉ gửi khi `event` là `REGISTER_SUBMIT` hoặc `REGISTER_EVENT`.
+
+---
+
+## 7. Các Thành phần Cốt lõi (Core Components)
+1.  **`tracking.js`**: Tracker tổng hợp, gửi dữ liệu về Webhook.
+    *   **Webhook URL:** `https://script.google.com/macros/s/AKfycbw3nzeW2UU6RqArz6DSONtuyApU77jYz5TlW7AoQgYqH0uMNbh4oySWco61PCQNWpqK/exec`
+2.  **`register.html` / `register_cc101.html`**: Giao diện Form đăng ký.
+3.  **Google Apps Script**: Xử lý logic ghi Sheet và gửi Mail thông báo.
+
 ---
 
 ## 📅 Lịch sử Thay đổi Kỹ thuật (Change Log)
 
 | Ngày | Thay đổi | Chi tiết |
 |---|---|---|
-| 19/03 | Tracking Quiz & Unified Analytics | Mở rộng theo dõi Analytics và logic G-Sheets |
-| 22/03 | Kiến trúc Repo | Chuyển đổi Repo sang `DeliveringHappiness` |
-| 27/03 | System Restoration | Tạo chiến lược Hai Tệp - Hai Kho (Demo vs Official). |
+| 04/04 | Cổng Đăng ký Native | Chuyển đổi từ Google Form sang Form nhúng trực tiếp. |
+| 06/04 | Pipeline & Notification | Hoàn thiện Webhook độc lập, sửa lỗi CORS và kích hoạt Mail thông báo BTC. |
+
+---
+*Cập nhật cuối: 06/04/2026 bởi Antigravity Final Fix.*
 | 02/04 | Sync Verification | Đồng bộ hóa toàn diện qua quy trình Patch-and-Revert. |
 | 03/04 | Native Register Portal | Triển khai form đăng ký 3 trường (`register.html`) và tích hợp GAS CRM. |
 | 04/04 | CRM & CC101 Integration | Triển khai form CC101, bổ sung trường Người giới thiệu cho form DH, đồng bộ Webhook Official (Culture Code account) & Tài liệu kỹ thuật. |
