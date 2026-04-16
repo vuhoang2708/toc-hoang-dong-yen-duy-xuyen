@@ -51,14 +51,32 @@
         }
 
         h1 {
-            font-size: clamp(0.65rem, 1.5vw, 0.95rem);
             font-weight: 800;
-            margin-bottom: 0.1rem;
-            white-space: nowrap;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+            text-align: center;
+        }
+        h1 .main-text {
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            display: block;
+            margin-bottom: 0.2rem;
             background: linear-gradient(135deg, #fff, var(--accent));
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+        h1 .sub-text {
+            font-size: clamp(0.8rem, 2vw, 1rem);
+            display: block;
+            font-weight: 600;
+            color: #fff;
+            opacity: 0.9;
+        }
+        h1 .loc-text {
+            font-size: clamp(0.7rem, 1.8vw, 0.9rem);
+            display: block;
+            font-weight: 400;
+            color: rgba(255,255,255,0.7);
         }
 
         .subtitle {
@@ -165,7 +183,11 @@
 
     <div class="form-card" id="formWrapper">
         <div class="header">
-            <h1>TỘC HOÀNG ĐÔNG YÊN - DUY XUYÊN - QUẢNG NAM (ĐÀ NẴNG)</h1>
+            <h1>
+                <span class="main-text">Tộc Hoàng</span>
+                <span class="sub-text">Làng Đông Yên, Xã Duy Trinh</span>
+                <span class="loc-text">Huyện Duy Xuyên - Quảng Nam (Đà Nẵng)</span>
+            </h1>
             <p class="subtitle" style="font-size: 1rem; color: #fff;">THÔNG BÁO: Lễ tế xuân hằng năm</p>
             <p class="subtitle" style="margin-top: 5px; font-size: 0.85rem;">Tổ chức lúc 8:00, Chủ Nhật, 26/04/2026 (10/3 âm lịch)<br>Địa điểm: Nhà thờ Tộc Hoàng Đông Yên, Duy Xuyên, Quảng Nam</p>
         </div>

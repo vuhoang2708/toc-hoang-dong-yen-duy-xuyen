@@ -90,11 +90,28 @@
     }
 
     h1 {
-      font-size: clamp(0.95rem, 2.5vw, 2.2rem);
       font-weight: 800;
       margin-bottom: 1.5rem;
-      line-height: 1.2;
+      line-height: 1.3;
       text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    }
+    h1 .main-text {
+      font-size: clamp(2.5rem, 8vw, 4.5rem);
+      display: block;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    h1 .sub-text {
+      font-size: clamp(1rem, 3vw, 1.8rem);
+      display: block;
+      font-weight: 600;
+      color: var(--gold);
+    }
+    h1 .loc-text {
+      font-size: clamp(0.9rem, 2.5vw, 1.5rem);
+      display: block;
+      font-weight: 400;
+      color: rgba(255,255,255,0.8);
     }
 
     .motto {
@@ -342,7 +359,11 @@
   <header class="hero">
     <div class="hero-content">
       <span class="clan-title">HỘI ĐỒNG GIA TỘC</span>
-      <h1>Tộc Hoàng Đông Yên - Duy Xuyên - Quảng Nam (Đà Nẵng)</h1>
+      <h1>
+        <span class="main-text">Tộc Hoàng</span>
+        <span class="sub-text">Làng Đông Yên, Xã Duy Trinh</span>
+        <span class="loc-text">Huyện Duy Xuyên - Quảng Nam (Đà Nẵng)</span>
+      </h1>
       <p class="motto">"Cây có gốc mới nở nhành xanh ngọn,<br>Nước có nguồn mới bể rộng sông sâu"</p>
       <a href="register/" class="btn-main">Đăng ký Lễ Tế Xuân 2026</a>
     </div>
