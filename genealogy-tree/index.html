@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Phả Đồ Cội Nguồn - Tộc Hoàng Đông Yên</title>
+    <!-- SEO and Display -->
+    <meta name="description" content="Khám phá sơ đồ cội nguồn Tộc Hoàng Đông Yên. Thao tác phóng to, thu nhỏ để xem chi tiết các thành viên.">
+    <!-- CSS -->
+    <link rel="stylesheet" href="../assets/css/style-v2.css">
+    <!-- OpenSeadragon for Deep Zoom -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/openseadragon.min.js"></script>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            background-color: var(--bg-near-black);
+        }
+        #osd-viewer {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            cursor: move;
+        }
+        .controls-overlay {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+            background: rgba(15, 23, 42, 0.85);
+            padding: 15px 25px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--clan-gold);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+            max-width: 90vw;
+        }
+        .controls-overlay h2 {
+            margin: 0 0 5px 0;
+            font-size: 1.2rem;
+            color: var(--clan-gold);
+            font-weight: 800;
+        }
+        .controls-overlay p {
+            margin: 0 0 15px 0;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 6px 12px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 6px;
+            transition: var(--transition);
+        }
+        .btn-back:hover {
+            background: var(--clan-red-deep);
+            border-color: var(--clan-red-bright);
+        }
+        .loading-screen {
+            position: absolute;
+            inset: 0;
+            background: var(--bg-near-black);
+            z-index: 50;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--clan-gold);
+            transition: opacity 0.5s;
+        }
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(245, 158, 11, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--clan-gold);
+            animation: spin 1s ease-in-out infinite;
+            margin-bottom: 20px;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        /* Mobile overrides */
+        @media (max-width: 768px) {
+            .controls-overlay {
+                top: 10px;
+                left: 10px;
+                padding: 12px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Loading Screen while High-Res Image loads -->
+    <div id="loading" class="loading-screen">
+        <div class="spinner"></div>
+        <p style="font-size: 0.9rem; font-style: italic;">Đang tải Phả đồ chất lượng cao (11MB)...</p>
+    </div>
+
+    <!-- Viewer Container -->
+    <div id="osd-viewer"></div>
+
+    <!-- Control UI -->
+    <div class="controls-overlay">
+        <h2>📌 Cây Phả Hệ Tộc</h2>
+        <p>Thao tác: Kéo thả để xem xung quanh.<br>Cuộn chuột hoặc dùng 2 ngón tay thu phóng.</p>
+        <a href="../" class="btn-back"><span>←</span> Quay lại Trang chủ</a>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var viewer = OpenSeadragon({
+                id: "osd-viewer",
+                prefixUrl: "https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/images/",
+                tileSources: {
+                    type: 'image',
+                    url:  '../assets/images/tree-map.png'
+                },
+                showNavigationControl: true,
+                maxZoomLevel: 10,
+                visibilityRatio: 0.5,
+                constrainDuringPan: true,
+            });
+
+            // Hide loading indicator once the first tile loads
+            viewer.addHandler('tile-loaded', function() {
+                var loader = document.getElementById('loading');
+                if (loader) {
+                    loader.style.opacity = '0';
+                    setTimeout(() => loader.remove(), 500);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

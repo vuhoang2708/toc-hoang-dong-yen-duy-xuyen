@@ -1,0 +1,7 @@
+# Ignore large binary files
+assets/videos/*.mp4
+temp_video/
+*.mp3
+gen_out.txt
+output.log
+test.mp3

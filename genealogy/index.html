@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cập Nhật Thông Tin Gia Phả - Tộc Hoàng Đông Yên</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style-v2.css">
+    <style>
+        body {
+            background: url('../assets/images/bg_dongyen_final.jpg') center/cover no-repeat fixed;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .form-card {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            padding: 3rem;
+            border-radius: var(--radius-lg);
+            width: 100%;
+            max-width: 850px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+        }
+
+        .input-group { margin-bottom: 1.25rem; }
+        .full-width { grid-column: span 2; }
+
+        label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--clan-gold);
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            color: white;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--clan-gold);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .loading-spinner {
+            display: none;
+            width: 20px; height: 20px;
+            border: 3px solid rgba(255,255,255,0.1);
+            border-top: 3px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 10px;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        @media (max-width: 640px) {
+            .form-grid { grid-template-columns: 1fr; }
+            .full-width { grid-column: span 1; }
+            .form-card { padding: 1.5rem; border-radius: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-card">
+        <div id="formContent">
+            <a href="../" style="display: inline-flex; align-items: center; color: var(--clan-gold); text-decoration: none; font-size: 0.85rem; margin-bottom: 2rem; gap: 5px; opacity: 0.8; transition: var(--transition);">
+                <span>←</span> Quay lại Trang chủ
+            </a>
+            <div class="clan-header" style="padding: 0; margin-bottom: 2rem;">
+                <h1 class="line-top" style="font-size: 2.2rem;"><span style="display: inline-block;">CẬP NHẬT GIA PHẢ</span></h1>
+                <span class="line-mid" style="font-size: 1rem;"><span style="display: inline-block;">TỘC HOÀNG/HUỲNH</span> <span style="display: inline-block;">ĐÔNG YÊN</span></span>
+                <span class="line-bot" style="font-size: 0.85rem; margin-top: 0.5rem; opacity: 0.8;">
+                    <span style="display: inline-block;">Thôn Đông Yên,</span> <span style="display: inline-block;">Xã Duy Xuyên,</span> <span style="display: inline-block;">Thành phố Đà Nẵng</span>
+                </span>
+                <span style="display: block; font-size: 0.75rem; margin-top: 0.3rem; font-style: italic; opacity: 0.6;">
+                    (nguyên là Thôn Đông Yên, Xã Duy Trinh, Huyện Duy Xuyên, Tỉnh Quảng Nam)
+                </span>
+            </div>
+
+            <div style="background: rgba(255,255,255,0.03); border: 1px dashed var(--clan-gold); padding: 1rem; border-radius: 12px; margin-bottom: 2rem; font-size: 0.9rem; text-align: center;">
+                <b>Lưu ý:</b> Quý bà con vui lòng cung cấp thông tin chính xác để Ban trị sự đối chiếu và cập nhật vào cây phả hệ chung của Tộc.
+            </div>
+
+            <form id="genealogyForm">
+                <div class="form-grid">
+                    <div class="input-group">
+                        <label>Họ tên người cung cấp *</label>
+                        <input type="text" name="providerName" required placeholder="Nhập họ tên...">
+                    </div>
+                    <div class="input-group">
+                        <label>Đời thứ (trong Tộc) *</label>
+                        <input type="text" name="generation" required placeholder="Ví dụ: Đời thứ 11">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label>Con thứ mấy (Trưởng, thứ...)</label>
+                        <input type="text" name="childOrder" placeholder="Ví dụ: Con thứ 2">
+                    </div>
+                    <div class="input-group">
+                        <label>Ngày tháng năm sinh (Dương/Âm lịch)</label>
+                        <input type="text" name="dob" placeholder="Ví dụ: 01/01/1990 (14/11 Âm)">
+                    </div>
+
+                    <div class="input-group">
+                        <label>Quê quán</label>
+                        <input type="text" name="hometown" placeholder="Địa chỉ quê quán...">
+                    </div>
+                    <div class="input-group">
+                        <label>Nơi cư trú hiện tại</label>
+                        <input type="text" name="residence" placeholder="Địa chỉ hiện nay...">
+                    </div>
+
+                    <div class="input-group">
+                        <label>Họ tên cha *</label>
+                        <input type="text" name="fatherName" required placeholder="Nhập họ tên cha...">
+                    </div>
+                    <div class="input-group">
+                        <label>Họ tên ông nội</label>
+                        <input type="text" name="gfName" placeholder="Nhập họ tên ông nội...">
+                    </div>
+
+                    <div class="input-group full-width">
+                        <label>Số điện thoại liên lạc</label>
+                        <input type="text" name="phone" placeholder="Để BTC liên lạc khi cần...">
+                    </div>
+
+                    <div class="input-group full-width">
+                        <label>Họ tên Vợ/Chồng, Dâu, Rể, Con (Kèm ngày sinh, quê quán)</label>
+                        <textarea name="familyInfo" rows="3" placeholder="Thông tin các thành viên khác..."></textarea>
+                    </div>
+
+                    <div class="input-group full-width">
+                        <label>Thông tin người đã quá cố (Ngày mất, nơi an táng)</label>
+                        <textarea name="deceasedInfo" rows="2" placeholder="Ngày mất, nơi an táng..."></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-clan" id="submitBtn" style="width: 100%;">
+                    <span class="loading-spinner" id="spinner"></span>
+                    <span id="btnText">Gửi thông tin cập nhật</span>
+                </button>
+            </form>
+        </div>
+
+        <div id="successMessage" style="display: none; text-align: center; padding: 3rem 0;">
+            <div style="font-size: 4rem; margin-bottom: 1.5rem;">🙏</div>
+            <h2 style="color: var(--clan-gold); margin-bottom: 1rem;">Gửi dữ liệu thành công!</h2>
+            <p style="color: var(--text-muted); line-height: 1.6;">Cảm ơn tấm lòng của bạn hướng về cội nguồn. Thanh danh Tộc Hoàng sẽ mãi trường tồn.</p>
+            <button onclick="window.location.reload()" class="btn-clan outline" style="margin-top: 2rem;">Gửi thêm thông tin khác</button>
+            <br>
+            <a href="../" style="display: inline-block; margin-top: 1.5rem; color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.9rem;">Quay về trang chủ</a>
+        </div>
+    </div>
+
+    <script>
+        window.CUSTOM_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbwd3dvNAPJ95hagerzwKSeOkud690qV_irK1hHGgCIWClOkvCiAn8XDBxycGUp0Jezk2w/exec";
+    </script>
+    <script src="../assets/js/tracking.js?v=2.6"></script>
+    <script>
+        document.getElementById('genealogyForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            const spinner = document.getElementById('spinner');
+            const text = document.getElementById('btnText');
+            
+            btn.disabled = true;
+            spinner.style.display = 'inline-block';
+            text.innerText = 'Đang xử lý...';
+
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData.entries());
+
+            try {
+                if (window.logToSheet) {
+                    await window.logToSheet('GENEALOGY_SUBMIT', data.providerName, {
+                        ...data,
+                        type: 'GENEALOGY_UPDATE',
+                        source: 'DongYen_GenealogyPage_V2'
+                    });
+                }
+
+                document.getElementById('formContent').style.display = 'none';
+                document.getElementById('successMessage').style.display = 'block';
+            } catch (err) {
+                console.error(err);
+                alert('Có lỗi xảy ra, vui lòng thử lại sau.');
+                btn.disabled = false;
+                spinner.style.display = 'none';
+                text.innerText = 'Gửi thông tin cập nhật';
+            }
+        });
+    </script>
+</body>
+</html>
+
+    <script>
+        window.CUSTOM_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbwd3dvNAPJ95hagerzwKSeOkud690qV_irK1hHGgCIWClOkvCiAn8XDBxycGUp0Jezk2w/exec";
+    </script>
+    <script src="../tracking.js?v=2.4"></script>
+    <script>
+        document.getElementById('genealogyForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            const spinner = document.getElementById('spinner');
+            const text = document.getElementById('btnText');
+            
+            btn.disabled = true;
+            spinner.style.display = 'inline-block';
+            text.innerText = 'Đang xử lý...';
+
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData.entries());
+
+            try {
+                // Tracking
+                if (window.logToSheet) {
+                    await window.logToSheet('GENEALOGY_SUBMIT', data.providerName, {
+                        ...data,
+                        type: 'GENEALOGY_UPDATE',
+                        source: 'DongYen_GenealogyPage'
+                    });
+                }
+
+                document.getElementById('formContent').style.display = 'none';
+                document.getElementById('successMessage').style.display = 'block';
+            } catch (err) {
+                console.error(err);
+                alert('Có lỗi xảy ra, vui lòng thử lại sau.');
+                btn.disabled = false;
+                spinner.style.display = 'none';
+                text.innerText = 'Gửi thông tin cập nhật';
+            }
+        });
+    </script>
+</body>
+</html>

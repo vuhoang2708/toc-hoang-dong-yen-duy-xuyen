@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Join Group</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #0a0a1a;
+            color: #f6ad55;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+        }
+        h1 {
+            font-size: 48px;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 20px rgba(246, 173, 85, 0.5);
+        }
+        .qr-container {
+            display: flex;
+            gap: 100px;
+        }
+        .qr-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 20px;
+            border: 2px solid #ed8936;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+        .qr-item img {
+            width: 300px;
+            height: 300px;
+            background: white;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        .qr-label {
+            margin-top: 20px;
+            font-size: 32px;
+            font-weight: bold;
+        }
+        .sub-footer {
+            margin-top: 60px;
+            font-size: 24px;
+            opacity: 0.8;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <h1>Quét mã để tham gia cùng Tộc</h1>
+    
+    <div class="qr-container">
+        <div class="qr-item">
+            <!-- QR Zalo -->
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://zalo.me/g/dfgnla191" alt="QR Zalo">
+            <div class="qr-label">GROUP ZALO</div>
+        </div>
+        
+        <div class="qr-item">
+            <!-- QR Facebook -->
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://www.facebook.com/share/g/18gnD7y4tq/" alt="QR Facebook">
+            <div class="qr-label">GROUP FACEBOOK</div>
+        </div>
+    </div>
+
+    <div class="sub-footer">Cảm ơn bà con Tộc Hoàng/Huỳnh Đông Yên</div>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trung Tâm Quản Trị - Tộc Hoàng Đông Yên</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/style-v2.css" />
+    <style>
+        :root {
+            --admin-dark: #0f172a;
+            --admin-card: rgba(30, 41, 59, 0.7);
+        }
+        body { background: var(--admin-dark); color: white; padding: 0; margin: 0; }
+        .admin-header {
+            background: rgba(0,0,0,0.3);
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--glass-border);
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+            position: sticky; top: 0; z-index: 100;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        .stat-card {
+            background: var(--admin-card);
+            border: 1px solid var(--glass-border);
+            padding: 1.5rem;
+            border-radius: 16px;
+            text-align: center;
+        }
+        .stat-card h3 { color: var(--clan-gold); font-size: 0.9rem; margin-bottom: 0.5rem; text-transform: uppercase; }
+        .stat-card .value { font-size: 2.5rem; font-weight: 800; }
+        
+        .action-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        .action-card {
+            background: var(--admin-card);
+            border: 1px solid var(--glass-border);
+            padding: 2rem;
+            border-radius: 20px;
+        }
+        .btn-admin {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: var(--clan-gold);
+            color: var(--dark);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            margin-top: 1rem;
+            transition: 0.3s;
+        }
+        .btn-admin:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2); }
+    </style>
+</head>
+<body>
+
+    <div class="admin-header">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <h1 style="font-size: 1.2rem; margin: 0; color: var(--clan-gold);">ADMIN PORTAL</h1>
+                <span style="opacity: 0.4;">|</span>
+                <span style="font-size: 0.9rem;">Tộc Hoàng Đông Yên</span>
+            </div>
+            <a href="login.html" style="color: #f87171; text-decoration: none; font-size: 0.9rem;">Đăng xuất</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- THỐNG KÊ NHANH -->
+        <h2 style="margin-bottom: 1.5rem; font-size: 1.5rem;">Thống kê tổng quan</h2>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>Đăng ký dự lễ</h3>
+                <div class="value">--</div>
+                <p style="font-size: 0.8rem; opacity: 0.6;">Dữ liệu từ Registration Sheet</p>
+            </div>
+            <div class="stat-card">
+                <h3>Yêu cầu Gia phả</h3>
+                <div class="value">--</div>
+                <p style="font-size: 0.8rem; opacity: 0.6;">Thông tin mới cần duyệt</p>
+            </div>
+            <div class="stat-card">
+                <h3>Lượt truy cập mới</h3>
+                <div class="value">--</div>
+                <p style="font-size: 0.8rem; opacity: 0.6;">Trong 7 ngày qua</p>
+            </div>
+        </div>
+
+        <!-- QUẢN LÝ DỮ LIỆU -->
+        <h2 style="margin-bottom: 1.5rem; font-size: 1.5rem;">Quản trị dữ liệu Gốc</h2>
+        <div class="action-grid">
+            <div class="action-card">
+                <h3 style="color: var(--clan-gold);">CRM Google Sheets</h3>
+                <p style="font-size: 0.9rem; opacity: 0.8; margin: 1rem 0;">Nơi lưu trữ toàn diện thông tin Đăng ký dự lễ, Khuyến học và Gia phả số.</p>
+                <p style="font-size: 0.8rem; color: #94a3b8; font-style: italic;">* Yêu cầu phân quyền email quản trị btc.tochoangdongyen@gmail.com</p>
+                <a href="#" class="btn-admin">Mở CRM Lead Sheet</a>
+            </div>
+
+            <div class="action-card">
+                <h3 style="color: var(--clan-gold);">Trung tâm Biên tập</h3>
+                <p style="font-size: 0.9rem; opacity: 0.8; margin: 1rem 0;">Giao diện đối soát nội dung nguyên văn (3 cột) để Ban biên tập rà soát và chỉnh sửa lịch sử, giá trị cốt lõi.</p>
+                <a href="editor/index.html" class="btn-admin">Mở Trình biên tập</a>
+            </div>
+
+            <div class="action-card">
+                <h3 style="color: var(--clan-gold);">Google Apps Script (Webhook)</h3>
+                <p style="font-size: 0.9rem; opacity: 0.8; margin: 1rem 0;">Cấu hình luồng nhận dữ liệu từ website và tự động gửi email thông báo.</p>
+                <a href="#" class="btn-admin outline" style="color: white; border: 1px solid var(--clan-gold);">Cấu hình Webhook</a>
+            </div>
+        </div>
+
+        <!-- VIDEO PRODUCTION -->
+        <div style="margin-top: 3rem; background: rgba(255,255,255,0.03); padding: 2rem; border-radius: 20px; border: 1px solid var(--glass-border);">
+            <h3 style="color: var(--clan-gold);">Sản xuất truyền thông (Video Scripts)</h3>
+            <p style="font-size: 0.95rem; margin-bottom: 1.5rem;">Ban biên tập có thể tự chạy script Python để tạo video giới thiệu website với giọng đọc AI.</p>
+            <div style="display: flex; gap: 1rem;">
+                <code style="background: black; padding: 0.5rem 1rem; border-radius: 6px; font-size: 0.8rem;">python scripts/generate_overview_v3.py</code>
+                <code style="background: black; padding: 0.5rem 1rem; border-radius: 6px; font-size: 0.8rem;">python scripts/assemble_video_v3.py</code>
+            </div>
+        </div>
+
+        <div style="height: 50px;"></div>
+    </div>
+
+</body>
+</html>
