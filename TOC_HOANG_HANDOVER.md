@@ -26,7 +26,7 @@
 ## 2. HƯỚNG DẪN QUẢN LÝ DỮ LIỆU
 
 ### 📋 Tiếp nhận thông tin Biên tập & Gia phả
-*   **Biên tập nội dung:** Sử dụng **Trình biên tập 3 cột** để rà soát nội dung nguyên văn. Mọi thay đổi khi bấm "Lưu" sẽ được gửi về Google Sheets (Sheet "Content_Updates") để phục vụ việc đóng gói bản in hoặc cập nhật website.
+*   **Biên tập nội dung:** Sử dụng **Trình biên tập 3 cột** để rà soát nội dung nguyên văn. Mọi thay đổi khi bấm "GỬI BAN BIÊN TẬP" sẽ được tự động đổ về Google Sheets của Ban Tổ Chức (tab `"Biên Tập"`) kèm email thông báo. Cơ chế này đảm bảo không rơi rớt 1 chữ nào của bà con.
 *   **Gia phả:** Mọi thông tin thành viên gửi qua Form được đổ về Sheet "Gia Phả".
 *   **Quản lý dữ liệu:** Link quản lý dữ liệu (Google Sheets) sẽ được phân quyền riêng cho Người quản lý và có email thông báo tức thì khi có dữ liệu mới.
 *   **Kiểm duyệt:** Ban biên tập cần đối chiếu thông tin người gửi với dữ liệu gốc trước khi cập nhật vào Cây phả hệ chính thức.
@@ -42,4 +42,4 @@
 *   Luôn kiểm tra tính chính xác của các đời, chi, nhánh trước khi công bố thông tin gia phả.
 
 **"Vì sự trường tồn và phát triển của dòng tộc"**
-*(Cập nhật: 22/04/2026)*
+*(Cập nhật: 24/04/2026)*

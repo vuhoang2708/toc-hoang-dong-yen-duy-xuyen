@@ -20,8 +20,8 @@ Dự án được xây dựng theo mô hình **Serverless Hybrid Architecture**,
 Thay vì sử dụng các CMS nặng nề như WordPress, dự án phát triển 2 Module quản trị tinh gọn:
 1.  **Admin Portal (`admin.html`)**: Trung tâm điều khiển chính, chứa các shortcut đến CRM, công cụ tạo video và hệ thống quản trị Webhook.
 2.  **Verbatim Editor (`editor/index.html`)**: Trình biên tập đối soát 3 cột chuyên dụng. 
-    *   **Logic**: Fetch dữ liệu từ Client -> Cho phép edit -> POST ngược lại Webhook để lưu vào Cloud.
-    *   **Persistence**: Tích hợp `localStorage` để tự động lưu bản nháp ngay cả khi mất mạng hoặc đóng trình duyệt đột ngột.
+    *   **Logic**: Fetch nội dung local -> Cho phép edit -> Bắn Webhook POST Request kèm Payload `{"section", "old_content", "new_content"}` tới App Script.
+    *   **Persistence & Sync**: Không chỉ dùng `localStorage` để chống mất kết nối, mà nay dữ liệu được đồng bộ Cloud-Sync vào tab `"Biên Tập"` trên Google Sheets. Kèm theo cơ chế thông báo e-mail thẳng tới Editor-in-Chief.
 
 ---
 
@@ -55,8 +55,11 @@ Hiệu ứng "Kính mờ" đặc trưng của website được triển khai qua 
 
 ## 4. BACKEND LOGIC (GOOGLE APPS SCRIPT)
 File `google_apps_script.js` đóng vai trò là "bộ não" xử lý serverless:
-*   **Webhook Entry Point**: Tiếp nhận dữ liệu qua hàm `doPost(e)`.
-*   **Data Routing**: Tự động phân loại dữ liệu dựa trên "type" gửi lên (Biên tập, Đăng ký, hay Gia phả) để điều phối vào đúng ID của Google Sheet tương ứng.
+*   **Webhook Entry Point**: Tiếp nhận dữ liệu qua hàm tĩnh `doPost(e)`.
+*   **Data Routing & Conditional Parsing**: Thuật toán tự động phân loại luồng Payload dựa vào JSON Header:
+    *   Nếu có `data.section`: Điều hướng ghi dạng lịch sử đối chiếu (Cũ - Mới) vào khung "Biên Tập".
+    *   Nếu `data.type === 'GENEALOGY_UPDATE'`: Trỏ vào cấu trúc cây rẽ nhánh bảng "Gia Phả".
+    *   Khác: Đưa về bảng "Đăng Ký".
 *   **Notification Engine**: Tích hợp dịch vụ Mail của Google để gửi cảnh báo tự động cho BTC mỗi khi có dữ liệu mới phát sinh.
 
 ---
@@ -80,4 +83,4 @@ Tích hợp chặt chẽ giữa GitHub và Vercel:
 3.  **Stage 3 (Live)**: Vercel tự động build và làm tươi trang Live ngay lập tức.
 
 ---
-*Tài liệu được soạn thảo chuyên sâu bởi Antigravity AI - Phiên bản Digital Heritage (23/04/2026).*
+*Tài liệu được soạn thảo chuyên sâu bởi Antigravity AI - Phiên bản Digital Heritage (24/04/2026).*
