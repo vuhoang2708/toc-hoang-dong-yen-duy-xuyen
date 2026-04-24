@@ -4,14 +4,17 @@
  */
 
 const ADMIN_EMAILS = ["vuhoang2708@gmail.com", "hoangconghien@gmail.com"];
-const SPREADSHEET_ID = "YOUR_SPREADSHEET_ID_HERE"; // Replace with your actual Sheet ID
+const SPREADSHEET_ID = "1Wa34sit-DkzrCq1U68JMlvMX1L11FES4VnFsO1Pxlts"; // Thay ID thực tế của Tộc Hoàng
 
 function doPost(e) {
   try {
     const data = JSON.parse(e.postData.contents);
     const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
     
-    if (data.type === 'GENEALOGY_UPDATE') {
+    // Phân luồng các loại Payload (Biên tập | Gia Phả | Đăng ký)
+    if (data.section) {
+      return handleEditorUpdate(ss, data);
+    } else if (data.type === 'GENEALOGY_UPDATE') {
       return handleGenealogy(ss, data);
     } else {
       return handleRegistration(ss, data);
@@ -21,6 +24,35 @@ function doPost(e) {
     return ContentService.createTextOutput(JSON.stringify({ status: "error", message: error.toString() }))
       .setMimeType(ContentService.MimeType.JSON);
   }
+}
+
+/**
+ * Handle Editor Updates
+ */
+function handleEditorUpdate(ss, data) {
+  const SHEET_NAME = "Biên Tập";
+  const sheet = ss.getSheetByName(SHEET_NAME) || ss.insertSheet(SHEET_NAME);
+  
+  if (sheet.getLastRow() === 0) {
+    sheet.appendRow(["Timestamp", "Phần (Section)", "Nội dung cũ", "Nội dung mới"]);
+    sheet.getRange(1, 1, 1, 4).setBackground("#e3f2fd").setFontWeight("bold");
+    sheet.setColumnWidth(2, 150);
+    sheet.setColumnWidth(3, 400);
+    sheet.setColumnWidth(4, 400);
+  }
+  
+  sheet.appendRow([
+    new Date(),
+    data.section || "",
+    data.old_content || "",
+    data.new_content || ""
+  ]);
+  
+  // Gửi Email thông báo thay đổi (Optional - tuỳ chọn thêm sau nếu cần)
+  sendEditorNotification(data);
+  
+  return ContentService.createTextOutput(JSON.stringify({ status: "success" }))
+    .setMimeType(ContentService.MimeType.JSON);
 }
 
 /**
@@ -113,6 +145,21 @@ function sendGenealogyNotification(data) {
       <li><b>Số điện thoại:</b> ${data.phone}</li>
     </ul>
     <p><i>Xem chi tiết tại Sheet "Gia Phả".</i></p>
+  `;
+  sendEmail(subject, htmlBody);
+}
+
+function sendEditorNotification(data) {
+  const subject = `[BIÊN TẬP] Cập nhật mục: ${data.section}`;
+  const htmlBody = `
+    <h3>Có sự thay đổi nội dung ở Bảng Biên Tập:</h3>
+    <ul>
+      <li><b>Phần:</b> ${data.section}</li>
+      <li><b>Nội dung MỚI:</b><br /> ${data.new_content}</li>
+      <hr>
+      <li><b>Nội dung CŨ:</b><br /> ${data.old_content}</li>
+    </ul>
+    <p><i>Trang dữ liệu: Sheet "Biên Tập".</i></p>
   `;
   sendEmail(subject, htmlBody);
 }
